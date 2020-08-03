@@ -5,6 +5,7 @@ import fetchData from './src/api/fetchData';
 
 import Header from './src/components/Header';
 import Input from './src/components/Input';
+import WeatherCard from './src/components/WeatherCard';
 
 const App = () => {
 
@@ -30,6 +31,7 @@ const App = () => {
     <ScrollView contentContainerStyle={primaryContainer}>
       <Header title='Get Weather' />
       <Input city={city} setCity={setCity} getData={getData} />
+      { displayData && <WeatherCard data={cityData} /> }
     </ScrollView>
   )
 }
