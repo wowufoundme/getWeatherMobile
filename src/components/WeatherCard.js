@@ -14,7 +14,9 @@ const WeatherCard = props => {
     cityInformation,
     cityGeoLocation,
     latitudeContainer,
-    longitudeContainer
+    longitudeContainer,
+    dataGeo,
+    labelGeo
   } = styles;
 
   return (
@@ -25,12 +27,15 @@ const WeatherCard = props => {
           <Text style={cityCountry}>{data.sys.country}</Text>
         </View>
         <View style={cityGeoLocation}>
-          <View style={latitudeContainer}></View>
-          <View style={longitudeContainer}></View>
+          <View style={latitudeContainer}>
+            <Text style={dataGeo}>{data.coord.lat}</Text>
+            <Text style={labelGeo}>Latitude</Text>
+          </View>
+          <View style={longitudeContainer}>
+            <Text style={dataGeo}>{data.coord.lon}</Text>
+            <Text style={labelGeo}>Longitude</Text>
+          </View>
         </View>
-      </View>
-      <View style={cardContainer}>
-
       </View>
     </ScrollView>
   )
@@ -63,35 +68,20 @@ const styles = StyleSheet.create({
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   cityInformation: {
-    width: '100%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'
-  },
-  cardContainer: {
-    width: '92%',
-    backgroundColor: '#efeeff',
-    marginTop: 10,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    borderRadius: 10,
-    padding: 10,
-    height: 400,
-    ...shadowLowDepth
   },
   cityInfoContainer: {
     height: 80,
     marginTop: 10,
-    width: '100%',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#ff0'
+    justifyContent: 'center'
   },
   cityName: {
     fontSize: 32,
@@ -106,9 +96,8 @@ const styles = StyleSheet.create({
     color: '#fff'
   },
   cityGeoLocation: {
-    backgroundColor: '#f0f',
     width: '100%',
-    height: 500,
+    height: 100,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
@@ -116,14 +105,29 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40
   },
   latitudeContainer: {
-    backgroundColor: '#f00',
     height: '80%',
     width: '50%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   longitudeContainer: {
-    backgroundColor: '#fff',
     height: '80%',
     width: '50%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  dataGeo: {
+    fontSize: 52,
+    fontFamily: 'SourceSansPro-Light'
+  },
+  labelGeo: {
+    fontSize: 18,
+    color: '#a1a1a1',
+    fontFamily: 'SourceSansPro-SemiBold'
   }
 })
 
