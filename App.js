@@ -13,11 +13,10 @@ const App = () => {
   const [ displayData, setDisplayData ] = useState(false);
   
   const getData = async (city='delhi') => {
-    // console.log('reached here', city);
-      // const data = await fetchData(city);
-      // setCityData(data);
-      // setDisplayData(true);
-      // setCity('');
+    const data = await fetchData(city);
+    setCityData(data);
+    setDisplayData(true);
+    setCity('');
   }
 
   const clearData = () => {
