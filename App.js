@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, Text, StyleSheet } from 'react-native';
+import { ScrollView, Text, StyleSheet, View } from 'react-native';
 
 import fetchData from './src/api/fetchData';
 
@@ -18,6 +18,7 @@ const App = () => {
     setCityData(data);
     setDisplayData(true);
     setCity('');
+    console.log('fetched data...')
   }
 
   const clearData = () => {
@@ -31,7 +32,9 @@ const App = () => {
     <ScrollView contentContainerStyle={primaryContainer}>
       <Header title='Get Weather' />
       <Input city={city} setCity={setCity} getData={getData} />
-      { displayData && <WeatherCard data={cityData} /> }
+      <View style={{ width: '100%' }}>
+        { displayData && <WeatherCard data={cityData} /> }
+      </View>
     </ScrollView>
   )
 }

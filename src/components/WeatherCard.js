@@ -1,5 +1,7 @@
 import React from 'react';
-import { ScrollView, Text, StyleSheet, View } from 'react-native';
+import { ScrollView, Text, StyleSheet, View, Image } from 'react-native';
+import Param from './Param';
+import Label from './Label';
 
 const WeatherCard = props => {
 
@@ -16,7 +18,12 @@ const WeatherCard = props => {
     latitudeContainer,
     longitudeContainer,
     dataGeo,
-    labelGeo
+    labelGeo,
+    temperatureContainer,
+    temperatureIcon,
+    temperatureReading,
+    gridParent,
+    gridChild
   } = styles;
 
   return (
@@ -34,6 +41,45 @@ const WeatherCard = props => {
           <View style={longitudeContainer}>
             <Text style={dataGeo}>{data.coord.lon}</Text>
             <Text style={labelGeo}>Longitude</Text>
+          </View>
+        </View>
+      </View>
+      <View style={cardContainer}>
+        <View style={temperatureContainer}>
+          <Text style={temperatureReading}>{Math.round(data.main.temp)}&deg; C</Text>
+          <Image
+            height={50}
+            width={50}
+            source={{ uri: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png` }}
+            style={temperatureIcon}
+          />
+        </View>
+        <View style={gridParent}>
+          <View style={gridChild}>
+            <Param value={data.weather[0].main} />
+            <Label value='Condition' />
+          </View>
+          <View style={gridChild}>
+            <Param value={`${data.main.temp_max}°`} />
+            <Label value='Max Temp' />
+          </View>
+          <View style={gridChild}>
+            <Param value={`${data.main.temp_min}°`} />
+            <Label value='Min Temp' />
+          </View>
+        </View>
+        <View style={gridParent}>
+          <View style={gridChild}>
+            <Param value={`${data.main.humidity}%`} />
+            <Label value='Humidity' />
+          </View>
+          <View style={gridChild}>
+            <Param value={`${data.wind.speed} km/hr`} />
+            <Label value='Wind Speed' />
+          </View>
+          <View style={gridChild}>
+            <Param value={data.main.pressure} />
+            <Label value='Pressure' />
           </View>
         </View>
       </View>
@@ -73,7 +119,7 @@ const styles = StyleSheet.create({
   cityInformation: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   cityInfoContainer: {
     height: 80,
@@ -96,38 +142,79 @@ const styles = StyleSheet.create({
     color: '#fff'
   },
   cityGeoLocation: {
-    width: '100%',
-    height: 100,
+    height: 50,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 40
+    paddingHorizontal: 40,
+    marginBottom: 30,
   },
   latitudeContainer: {
     height: '80%',
-    width: '50%',
+    width: '30%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   longitudeContainer: {
     height: '80%',
-    width: '50%',
+    width: '30%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center'
   },
   dataGeo: {
-    fontSize: 52,
+    fontSize: 24,
     fontFamily: 'SourceSansPro-Light'
   },
   labelGeo: {
     fontSize: 18,
     color: '#a1a1a1',
     fontFamily: 'SourceSansPro-SemiBold'
+  },
+  cardContainer: {
+    width: '95%',
+    borderRadius: 3,
+    backgroundColor: '#ffffff',
+    paddingVertical: 30,
+    paddingHorizontal: 20,
+    ...shadowHighDepth
+  },
+  temperatureContainer: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  temperatureIcon: {
+    width: 100,
+    height: 100
+  },
+  temperatureReading: {
+    fontSize: 64,
+    fontFamily: 'SourceSansPro-Light'
+  },
+  gridParent: {
+    width: '100%',
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(0, 0, 0, 0.1)',
+    paddingHorizontal: 10,
+    paddingVertical: 15,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  gridChild: {
+    width: '33%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 })
 
