@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, Text, StyleSheet } from 'react-native';
+import { ScrollView, Text, StyleSheet, View } from 'react-native';
 
 import fetchData from './src/api/fetchData';
 
 import Header from './src/components/Header';
 import Input from './src/components/Input';
+import WeatherCard from './src/components/WeatherCard';
 
 const App = () => {
 
@@ -17,6 +18,7 @@ const App = () => {
     setCityData(data);
     setDisplayData(true);
     setCity('');
+    console.log('fetched data...')
   }
 
   const clearData = () => {
@@ -30,17 +32,21 @@ const App = () => {
     <ScrollView contentContainerStyle={primaryContainer}>
       <Header title='Get Weather' />
       <Input city={city} setCity={setCity} getData={getData} />
+      <View style={{ width: '100%' }}>
+        { displayData && <WeatherCard data={cityData} /> }
+      </View>
     </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
   primaryContainer: {
+    width: '100%',
+    height: '100%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    height: '100%',
     backgroundColor: '#F4F5FB'
   }
 })
