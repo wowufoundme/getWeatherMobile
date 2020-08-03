@@ -1,11 +1,12 @@
 import React from 'react';
 import { ScrollView, Text } from 'react-native';
-import AppContainer from './src/AppContainer';
+
+import Header from './src/components/Header';
 
 const App = () => {
   return (
     <ScrollView>
-      <AppContainer />
+      <Header title='Get Weather'/>
     </ScrollView>
   )
 }
