@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { ScrollView, Text } from 'react-native';
+import AppContainer from './src/AppContainer';
 
 const App = () => {
   return (
-    <View>
-      <Text>getWeather</Text>
-    </View>
+    <ScrollView>
+      <AppContainer />
+    </ScrollView>
   )
 }
 
