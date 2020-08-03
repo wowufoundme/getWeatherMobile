@@ -38,6 +38,7 @@ const App = () => {
 
 const styles = StyleSheet.create({
   primaryContainer: {
+    flex: 1,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',

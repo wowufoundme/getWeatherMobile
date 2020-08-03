@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { ScrollView, Text, StyleSheet, View } from 'react-native';
 
 const WeatherCard = props => {
 
@@ -10,19 +10,29 @@ const WeatherCard = props => {
     cardContainer, 
     cityInfoContainer,
     cityName,
-    cityCountry
+    cityCountry,
+    cityInformation,
+    cityGeoLocation,
+    latitudeContainer,
+    longitudeContainer
   } = styles;
 
   return (
-    <View style={parentContainer}>
-      <View style={cityInfoContainer}>
-        <Text style={cityName}>{data.name}</Text>
-        <Text style={cityCountry}>{data.sys.country}</Text>
+    <ScrollView contentContainerStyle={parentContainer}>
+      <View style={cityInformation}>
+        <View style={cityInfoContainer}>
+          <Text style={cityName}>{data.name}</Text>
+          <Text style={cityCountry}>{data.sys.country}</Text>
+        </View>
+        <View style={cityGeoLocation}>
+          <View style={latitudeContainer}></View>
+          <View style={longitudeContainer}></View>
+        </View>
       </View>
       <View style={cardContainer}>
 
       </View>
-    </View>
+    </ScrollView>
   )
 }
 
@@ -55,10 +65,16 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center'
   },
+  cityInformation: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
   cardContainer: {
     width: '92%',
     backgroundColor: '#efeeff',
-    marginTop: 20,
+    marginTop: 10,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -68,12 +84,14 @@ const styles = StyleSheet.create({
     ...shadowLowDepth
   },
   cityInfoContainer: {
-    height: 100,
+    height: 80,
+    marginTop: 10,
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: '#ff0'
   },
   cityName: {
     fontSize: 32,
@@ -86,6 +104,26 @@ const styles = StyleSheet.create({
     fontFamily: 'SourceSansPro-Bold',
     backgroundColor: '#000',
     color: '#fff'
+  },
+  cityGeoLocation: {
+    backgroundColor: '#f0f',
+    width: '100%',
+    height: 500,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 40
+  },
+  latitudeContainer: {
+    backgroundColor: '#f00',
+    height: '80%',
+    width: '50%',
+  },
+  longitudeContainer: {
+    backgroundColor: '#fff',
+    height: '80%',
+    width: '50%',
   }
 })
 
