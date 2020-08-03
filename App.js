@@ -13,10 +13,11 @@ const App = () => {
   const [ displayData, setDisplayData ] = useState(false);
   
   const getData = async (city='delhi') => {
-      const data = await fetchData(city);
-      setCityData(data);
-      setDisplayData(true);
-      setCity('');
+    // console.log('reached here', city);
+      // const data = await fetchData(city);
+      // setCityData(data);
+      // setDisplayData(true);
+      // setCity('');
   }
 
   const clearData = () => {
@@ -29,7 +30,7 @@ const App = () => {
   return (
     <ScrollView contentContainerStyle={primaryContainer}>
       <Header title='Get Weather' />
-      <Input city={city} setCity={setCity} />
+      <Input city={city} setCity={setCity} getData={getData} />
     </ScrollView>
   )
 }

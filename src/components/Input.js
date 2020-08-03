@@ -4,12 +4,14 @@ import {
   TextInput, 
   StyleSheet 
 } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Input = props => {
 
   const { 
     city,
-    setCity
+    setCity,
+    getData
   } = props;
 
   const { 
@@ -20,6 +22,7 @@ const Input = props => {
 
   return (
     <View style={inputContainer}>
+      <Icon name='search' size={16} color='#0a0a0a' style={{ paddingLeft: 10 }}/>
       <TextInput 
         value={city}
         onChangeText={text => setCity(text)}
@@ -27,6 +30,13 @@ const Input = props => {
         placeholderStyle={placeholderStyles} 
         placeholderTextColor="#D8D8D8"
         style={inputText}
+        autoCapitalize='words'
+        autoCompleteType='off'
+        autoCorrect={false}
+        autoFocus
+        clearButtonMode='while-editing'
+        onSubmitEditing={() => getData(city)}
+        blurOnSubmit={false}
       />
     </View>
   )
@@ -38,12 +48,16 @@ const styles = StyleSheet.create({
     width: '95%',
     marginTop: 10,
     elevation: 5,
-    borderRadius: 2
+    borderRadius: 2,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   inputText: {
     color: '#0a0a0a',
-    paddingLeft: 20,
-    paddingRight: 20
+    paddingLeft: 10,
+    paddingRight: 20,
+    width: '100%'
   },
   placeholderStyles: {
     color: '#5a5a5a',
