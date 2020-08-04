@@ -101,7 +101,7 @@ const shadowHighDepth = {
 const shadowLowDepth = {
   shadowColor: "#0a0a0a",
   shadowOffset: {
-    width: 0,
+    width: 10,
     height: 2,
   },
   shadowOpacity: 0.25,
@@ -120,6 +120,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    backgroundColor: '#ffffff',
+    width: '95%',
+    marginTop: 20,
   },
   cityInfoContainer: {
     height: 80,
@@ -181,7 +184,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     paddingVertical: 30,
     paddingHorizontal: 20,
-    ...shadowHighDepth
+    ...shadowLowDepth
   },
   temperatureContainer: {
     width: '100%',

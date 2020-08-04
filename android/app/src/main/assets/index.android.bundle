@@ -1339,7 +1339,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   _reactNative.AppRegistry.registerComponent(_app.name, function () {
     return _App.default;
   });
-},0,[1,2,473,671],"index.js");
+},0,[1,2,473,672],"index.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   function _interopRequireDefault(obj) {
     return obj && obj.__esModule ? obj : {
@@ -98565,12 +98565,18 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
             case 3:
               data = _context.sent;
-              setCityData(data);
-              setDisplayData(true);
-              setCity('');
-              console.log('fetched data...');
 
-            case 8:
+              if (!data) {
+                _reactNative.Alert.alert('City Not Found!');
+
+                setCity('');
+              } else if (data) {
+                setCityData(data);
+                setDisplayData(true);
+                setCity('');
+              }
+
+            case 5:
             case "end":
               return _context.stop();
           }
@@ -98583,22 +98589,33 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       setDisplayData(false);
     };
 
-    var primaryContainer = styles.primaryContainer;
-    return _react.default.createElement(_reactNative.ScrollView, {
+    var primaryContainer = styles.primaryContainer,
+        imageBackground = styles.imageBackground;
+    return _react.default.createElement(_reactNative.View, {
+      style: {
+        flex: 1
+      },
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 39,
+        columnNumber: 5
+      }
+    }, _react.default.createElement(_reactNative.ScrollView, {
       contentContainerStyle: primaryContainer,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 32,
-        columnNumber: 5
+        lineNumber: 40,
+        columnNumber: 7
       }
     }, _react.default.createElement(_Header.default, {
       title: "Get Weather",
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 33,
-        columnNumber: 7
+        lineNumber: 41,
+        columnNumber: 9
       }
     }), _react.default.createElement(_Input.default, {
       city: city,
@@ -98607,8 +98624,17 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 34,
-        columnNumber: 7
+        lineNumber: 42,
+        columnNumber: 9
+      }
+    }), _react.default.createElement(_reactNative.Image, {
+      style: imageBackground,
+      source: _$$_REQUIRE(_dependencyMap[10], "./assets/images/opti.png"),
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 43,
+        columnNumber: 9
       }
     }), _react.default.createElement(_reactNative.View, {
       style: {
@@ -98617,18 +98643,18 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 35,
-        columnNumber: 7
+        lineNumber: 44,
+        columnNumber: 9
       }
     }, displayData && _react.default.createElement(_WeatherCard.default, {
       data: cityData,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 36,
-        columnNumber: 26
+        lineNumber: 45,
+        columnNumber: 28
       }
-    })));
+    }))));
   };
 
   _s(App, "pB9CBM1rwz46Y+YFXgwwXJRPZMM=");
@@ -98638,12 +98664,19 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   var styles = _reactNative.StyleSheet.create({
     primaryContainer: {
       width: '100%',
-      height: '100%',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'flex-start',
       alignItems: 'center',
-      backgroundColor: '#F4F5FB'
+      backgroundColor: '#F4F5FB',
+      flexGrow: 1
+    },
+    imageBackground: {
+      width: '100%',
+      height: '100%',
+      resizeMode: 'cover',
+      position: 'absolute',
+      zIndex: -1
     }
   });
 
@@ -98653,7 +98686,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   var _c;
 
   $RefreshReg$(_c, "App");
-},473,[1,9,108,14,55,2,474,501,502,668],"App.js");
+},473,[1,9,108,14,55,2,474,501,502,668,675],"App.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
 
@@ -98669,17 +98702,22 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   var API_KEY = "3f63b541464c9d678aa6041f9abf4488";
 
   var fetchData = function fetchData(city) {
-    var response;
+    var data;
     return _regenerator.default.async(function fetchData$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return _regenerator.default.awrap(_axios.default.get("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=" + API_KEY));
+            return _regenerator.default.awrap(_axios.default.get("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=" + API_KEY).then(function (response) {
+              return response.data;
+            }).catch(function (error) {
+              console.log('An error was found');
+              return null;
+            }));
 
           case 2:
-            response = _context.sent;
-            return _context.abrupt("return", response.data);
+            data = _context.sent;
+            return _context.abrupt("return", data);
 
           case 4:
           case "end":
@@ -104582,7 +104620,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   var shadowLowDepth = {
     shadowColor: "#0a0a0a",
     shadowOffset: {
-      width: 0,
+      width: 10,
       height: 2
     },
     shadowOpacity: 0.25,
@@ -104600,7 +104638,10 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     cityInformation: {
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'center'
+      alignItems: 'center',
+      backgroundColor: '#ffffff',
+      width: '95%',
+      marginTop: 20
     },
     cityInfoContainer: {
       height: 80,
@@ -104662,7 +104703,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       backgroundColor: '#ffffff',
       paddingVertical: 30,
       paddingHorizontal: 20
-    }, shadowHighDepth),
+    }, shadowLowDepth),
     temperatureContainer: {
       width: '100%',
       display: 'flex',
@@ -104738,7 +104779,8 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
   var styles = _reactNative.StyleSheet.create({
     paramText: {
-      fontSize: 20
+      fontSize: 20,
+      fontFamily: 'SourceSansPro-Bold'
     }
   });
 
@@ -104782,8 +104824,9 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
   var styles = _reactNative.StyleSheet.create({
     labelText: {
-      fontSize: 14,
-      color: '#5a5a5a'
+      fontSize: 16,
+      color: '#5a5a5a',
+      fontFamily: 'SourceSansPro-Regular'
     }
   });
 
@@ -104799,7 +104842,19 @@ __d(function(global, require, _aUnused, _bUnused, module, exports, _cUnused) {
   "name": "getWeather",
   "displayName": "getWeather"
 };
-},671,[],"app.json");
+},672,[],"app.json");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  module.exports = _$$_REQUIRE(_dependencyMap[0], "react-native/Libraries/Image/AssetRegistry").registerAsset({
+    "__packager_asset": true,
+    "httpServerLocation": "/assets/assets/images",
+    "width": 669,
+    "height": 836,
+    "scales": [1],
+    "hash": "e0b9ca1cfa5ad4d1144746601612c0a1",
+    "name": "opti",
+    "type": "png"
+  });
+},675,[219],"assets\\images\\opti.png");
 __r(94);
 __r(0);
 //# sourceMappingURL=http://localhost:8081/index.map?platform=android
