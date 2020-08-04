@@ -120,6 +120,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    backgroundColor: '#ffffff',
+    width: '95%',
+    marginTop: 20,
   },
   cityInfoContainer: {
     height: 80,

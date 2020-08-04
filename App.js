@@ -7,8 +7,6 @@ import Header from './src/components/Header';
 import Input from './src/components/Input';
 import WeatherCard from './src/components/WeatherCard';
 
-var logo = require('./assets/images/wallpaper.jpg');
-
 const App = () => {
 
   const [ city, setCity ] = useState('');
@@ -42,7 +40,7 @@ const App = () => {
       <ScrollView contentContainerStyle={primaryContainer}>
         <Header title='Get Weather' />
         <Input city={city} setCity={setCity} getData={getData} />
-        <Image style={imageBackground} source={require('./assets/images/wallpaper.jpg')} />
+        <Image style={imageBackground} source={require('./assets/images/opti.png')} />
         <View style={{ width: '100%' }}>
           { displayData && <WeatherCard data={cityData} /> }
         </View>
@@ -62,10 +60,11 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   imageBackground: {
-    flex: 1,
     width: '100%',
+    height: '100%',
     resizeMode: 'cover',
-    position: 'absolute'
+    position: 'absolute',
+    zIndex: -1
   }
 })
 

@@ -13,8 +13,9 @@ const Label = props => {
 
 const styles = StyleSheet.create({
   labelText: {
-    fontSize: 14,
-    color: '#5a5a5a'
+    fontSize: 16,
+    color: '#5a5a5a',
+    fontFamily: 'SourceSansPro-Regular',
   }
 })
 
