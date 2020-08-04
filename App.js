@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { ScrollView, Text, StyleSheet, View, Alert } from 'react-native';
+import { ScrollView, Text, StyleSheet, View, Alert, Image } from 'react-native';
 
 import fetchData from './src/api/fetchData';
 
 import Header from './src/components/Header';
 import Input from './src/components/Input';
 import WeatherCard from './src/components/WeatherCard';
+
+var logo = require('./assets/images/wallpaper.jpg');
 
 const App = () => {
 
@@ -30,29 +32,40 @@ const App = () => {
       setDisplayData(false);
   }
 
-  const { primaryContainer } = styles;
+  const { 
+    primaryContainer, 
+    imageBackground
+  } = styles;
 
   return (
-    <ScrollView contentContainerStyle={primaryContainer}>
-      <Header title='Get Weather' />
-      <Input city={city} setCity={setCity} getData={getData} />
-      <View style={{ width: '100%' }}>
-        { displayData && <WeatherCard data={cityData} /> }
-      </View>
-    </ScrollView>
+    <View style={{ flex: 1 }}>
+      <ScrollView contentContainerStyle={primaryContainer}>
+        <Header title='Get Weather' />
+        <Input city={city} setCity={setCity} getData={getData} />
+        <Image style={imageBackground} source={require('./assets/images/wallpaper.jpg')} />
+        <View style={{ width: '100%' }}>
+          { displayData && <WeatherCard data={cityData} /> }
+        </View>
+      </ScrollView>
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
   primaryContainer: {
     width: '100%',
-    height: '100%',
     display: 'flex',
-    flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#F4F5FB'
+    backgroundColor: '#F4F5FB',
+    flexGrow: 1,
+  },
+  imageBackground: {
+    flex: 1,
+    width: '100%',
+    resizeMode: 'cover',
+    position: 'absolute'
   }
 })
 
