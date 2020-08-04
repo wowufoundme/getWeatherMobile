@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { ScrollView, Text, StyleSheet, View } from 'react-native';
+import React, { useState } from 'react';
+import { ScrollView, Text, StyleSheet, View, Alert } from 'react-native';
 
 import fetchData from './src/api/fetchData';
 
@@ -15,10 +15,14 @@ const App = () => {
   
   const getData = async (city='delhi') => {
     const data = await fetchData(city);
-    setCityData(data);
-    setDisplayData(true);
-    setCity('');
-    console.log('fetched data...')
+    if (!data) {
+      Alert.alert('City Not Found!');
+      setCity('');
+    } else if (data) {
+      setCityData(data);
+      setDisplayData(true);
+      setCity('');
+    }
   }
 
   const clearData = () => {
@@ -44,6 +48,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     display: 'flex',
+    flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',

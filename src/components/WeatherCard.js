@@ -101,7 +101,7 @@ const shadowHighDepth = {
 const shadowLowDepth = {
   shadowColor: "#0a0a0a",
   shadowOffset: {
-    width: 0,
+    width: 10,
     height: 2,
   },
   shadowOpacity: 0.25,
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     paddingVertical: 30,
     paddingHorizontal: 20,
-    ...shadowHighDepth
+    ...shadowLowDepth
   },
   temperatureContainer: {
     width: '100%',
