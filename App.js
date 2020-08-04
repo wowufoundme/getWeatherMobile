@@ -40,7 +40,7 @@ const App = () => {
       <ScrollView contentContainerStyle={primaryContainer}>
         <Header title='Get Weather' />
         <Input city={city} setCity={setCity} getData={getData} />
-        <Image style={imageBackground} source={require('./assets/images/opti.png')} />
+        <Image style={imageBackground} source={require('./assets/images/wallpaper.png')} />
         <View style={{ width: '100%' }}>
           { displayData && <WeatherCard data={cityData} /> }
         </View>
