@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import { ScrollView, Text, StyleSheet, View, Alert, Image } from 'react-native';
+import { 
+  ScrollView, 
+  StyleSheet, 
+  View, 
+  Alert, 
+  Image 
+} from 'react-native';
 
 import fetchData from './src/api/fetchData';
-
 import Header from './src/components/Header';
 import Input from './src/components/Input';
 import WeatherCard from './src/components/WeatherCard';
