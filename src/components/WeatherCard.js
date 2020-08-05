@@ -1,5 +1,12 @@
 import React from 'react';
-import { ScrollView, Text, StyleSheet, View, Image } from 'react-native';
+import { 
+  ScrollView, 
+  Text, 
+  StyleSheet, 
+  View, 
+  Image 
+} from 'react-native';
+
 import Param from './Param';
 import Label from './Label';
 
