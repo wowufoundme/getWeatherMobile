@@ -47,13 +47,11 @@ const styles = StyleSheet.create({
   inputContainer: {
     backgroundColor: 'rgba(244, 245, 251, 0.2)',
     width: '95%',
-    borderRadius: 2,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     zIndex: 9999,
     marginTop: 16,
-    borderRadius: 4,
     paddingLeft: 10,
   },
   inputText: {
