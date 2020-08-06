@@ -37,6 +37,7 @@ const Input = props => {
         clearButtonMode='while-editing'
         onSubmitEditing={() => getData(city)}
         blurOnSubmit={false}
+        returnKeyType="search"
       />
     </View>
   )
@@ -45,13 +46,13 @@ const Input = props => {
 const styles = StyleSheet.create({
   inputContainer: {
     backgroundColor: '#F4F5FB',
-    width: '95%',
-    marginTop: 10,
+    width: '100%',
     elevation: 5,
     borderRadius: 2,
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    zIndex: 9999
   },
   inputText: {
     color: '#0a0a0a',
