@@ -28,9 +28,7 @@ const Header = props => {
 
 const styles = StyleSheet.create({
   headerContainer: {
-    width: '100%',
-    height: 60,
-    backgroundColor: '#efeeff',
+    backgroundColor: "rgba(0,0,0,0)",
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-start',
@@ -44,7 +42,6 @@ const styles = StyleSheet.create({
   imageLogo: {
     height: 50,
     width: 50,
-    marginLeft: 10,
     marginRight: 5 
   },
   headerTitle: {
