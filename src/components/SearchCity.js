@@ -4,12 +4,14 @@ import {
   View, 
   Alert,
   Dimensions,
-  Image
+  Image,
+  Text
 } from 'react-native';
 
 import Input from './Input';
 import fetchData from '../api/fetchData';
 import imagesData from '../../assets/images/images.list';
+import Button from '../components/Button';
 
 const SearchCity = props => {
 
@@ -18,7 +20,7 @@ const SearchCity = props => {
   const [ imageParam, setImageParam ] = useState(0);
   const maxImageParam = imagesData.length-1;
   
-  const getData = async (city='delhi') => {
+  const getData = async (city='') => {
     await fetchData(city)
     .then((data) => {
       if (data) {
@@ -31,7 +33,6 @@ const SearchCity = props => {
       }
     })
     .catch(error => console.log(error.message)); 
-    
   }
 
   const { 
@@ -40,28 +41,30 @@ const SearchCity = props => {
     imageBackground
   } = styles;
 
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start' }}>
-    <Image style={imageBackground} source={require('../../assets/images/wall.jpg')} />
-      <Input city={city} setCity={setCity} getData={getData} />
-    </View>
+  const clearData = () => {
+    setCity('');
+    console.log('Cleared Data');
+  }
 
-    // <View style={container} >
-    //   <Header title='Get Weather' />
-    //   <Image style={imageBackground} source={imagesRandomize[imageParam]} />
-    //   <ScrollView contentContainerStyle={primaryContainer}>    
-    //     <Input city={city} setCity={setCity} getData={getData} />
-    //     <View style={{ width: '100%' }}>
-    //       { displayData && <WeatherCard data={cityData} /> }
-    //     </View>
-    //   </ScrollView>
-    // </View>
+  return (
+    <View style={container}>
+      <Image style={imageBackground} source={require('../../assets/images/wall.jpg')} />
+      <Input city={city} setCity={setCity} getData={getData} />
+      <View style={{ position: 'absolute', bottom: 0, display: 'flex', flexDirection: 'row', justifyContent: 'center' }} >
+        <Button theme="filled" title="Search" getData={getData} functionality="getdata" city={city} />
+        <Button theme="outline" title="Clear" clearData={clearData} />
+      </View>
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%'
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    width: '100%',
+    backgroundColor: '#ffffff',
   },
   primaryContainer: {
     width: '100%',

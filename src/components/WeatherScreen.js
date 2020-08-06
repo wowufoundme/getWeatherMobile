@@ -11,7 +11,11 @@ import WeatherCard from './WeatherCard';
 
 const WeatherScreen = ({ route }) => {
 
-  const { imageBackground } = styles;
+  const { 
+    imageBackground,
+    contentContainer,
+    splitSixTen
+  } = styles;
   const data = route.params.data;
   const imageIndex = route.params.imageIndex;
 
@@ -21,8 +25,8 @@ const WeatherScreen = ({ route }) => {
 
   return (
     <View style={{ flex: 1, height: 2000 }}>
-      <ScrollView contentContainerStyle={{ backgroundColor: '#ffffff', height: '100%', alignItems: 'center', justifyContent: 'center' }}>
-        <View style={{ flex: 0.6, width: '100%', height: 2000, alignItems: 'center', justifyContent: 'center' }}>
+      <ScrollView contentContainerStyle={contentContainer}>
+        <View style={splitSixTen}>
           <Image style={imageBackground} source={imagesData[imageIndex]} />
           <Text>{data.name}</Text>
         </View>
@@ -35,11 +39,25 @@ const WeatherScreen = ({ route }) => {
 }
 
 const styles = StyleSheet.create({
+  contentContainer: {
+    backgroundColor: '#ffffff', 
+    height: '100%', 
+    alignItems: 'center', 
+    justifyContent: 'center',
+  },
   imageBackground: {
     height: '100%',
     resizeMode: 'cover',
     position: 'absolute',
-    zIndex: -1
+    top: 0,
+    left: 0,
+    zIndex: -1,
+  },
+  splitSixTen: {
+    flex: 0.6, 
+    width: '100%', 
+    alignItems: 'center', 
+    justifyContent: 'center',
   }
 })
 

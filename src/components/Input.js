@@ -22,7 +22,7 @@ const Input = props => {
 
   return (
     <View style={inputContainer}>
-      <Icon name='search' size={16} color='#0a0a0a' style={{ paddingLeft: 10 }}/>
+      <Icon name='search' size={16} color='#ffffff' style={{ paddingLeft: 10 }}/>
       <TextInput 
         value={city}
         onChangeText={text => setCity(text)}
@@ -45,17 +45,19 @@ const Input = props => {
 
 const styles = StyleSheet.create({
   inputContainer: {
-    backgroundColor: '#F4F5FB',
-    width: '100%',
-    elevation: 5,
+    backgroundColor: 'rgba(244, 245, 251, 0.2)',
+    width: '95%',
     borderRadius: 2,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    zIndex: 9999
+    zIndex: 9999,
+    marginTop: 16,
+    borderRadius: 4,
+    paddingLeft: 10,
   },
   inputText: {
-    color: '#0a0a0a',
+    color: '#ffffff',
     paddingLeft: 10,
     paddingRight: 20,
     width: '100%'
