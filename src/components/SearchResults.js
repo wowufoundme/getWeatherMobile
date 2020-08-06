@@ -45,6 +45,7 @@ const SearchResults = props => {
   return (
     <View style={parentContainer} >
       <FlatList 
+        keyboardShouldPersistTaps={'handled'}
         keyExtractor={( item ) => item.id.toString()}
         data={data}
         renderItem={(item) => renderItem(item)}
