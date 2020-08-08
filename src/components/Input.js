@@ -2,9 +2,9 @@ import React from 'react';
 import { 
   View, 
   TextInput, 
-  StyleSheet 
+  StyleSheet,
+  Image
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Input = props => {
 
@@ -22,7 +22,13 @@ const Input = props => {
 
   return (
     <View style={inputContainer}>
-      <Icon name='search' size={16} color='#ffffff' style={{ paddingLeft: 10 }}/>
+      <Image 
+        source={require('../../assets/images/search.png')} 
+        style={{
+          height: 20,
+          width: 20
+        }}
+      />
       <TextInput 
         value={city}
         onChangeText={text => setCity(text)}
@@ -52,7 +58,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     zIndex: 9999,
     marginTop: 16,
-    paddingLeft: 10,
+    paddingLeft: 20,
     height: 60,
   },
   inputText: {
