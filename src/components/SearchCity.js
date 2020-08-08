@@ -21,13 +21,13 @@ const SearchCity = props => {
   const [ city, setCity ] = useState('');
   const [ imageParam, setImageParam ] = useState(0);
   const [ searchResults, setSearchResults ] = useState([]);
-  const maxImageParam = imagesData.length-1;
+  const maxImageParam = imagesData.length;
   
   const getData = async (city='') => {
     await fetchData(city)
     .then((data) => {
       if (data) {
-        imageParam >= maxImageParam ? setImageParam(0) : setImageParam(imageParam+1);
+        setImageParam(Math.floor(Math.random() * maxImageParam));
         navigation.navigate('WeatherScreen', { data: data, imageIndex: imageParam })
         setCity('');
       } else {
@@ -44,10 +44,7 @@ const SearchCity = props => {
     buttonContainer
   } = styles;
 
-  const clearData = () => {
-    setCity('');
-    console.log('Cleared Data');
-  }
+  const clearData = () => setCity('');
 
   useEffect(() => {
     if(  city.length > 2 ) {
