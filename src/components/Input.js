@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     zIndex: 9999,
     marginTop: 16,
     paddingLeft: 10,
+    height: 60,
   },
   inputText: {
     color: '#ffffff',
