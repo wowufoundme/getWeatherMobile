@@ -49,19 +49,18 @@ const styles = StyleSheet.create({
   },
   largeTag: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    paddingVertical: 8,
   },
   largeTagValue: {
-    height: 40,
     fontSize: 28,
     color: '#ffffff',
-    textAlignVertical: 'center',
     paddingHorizontal: 10,
     fontFamily: 'SourceSansPro-SemiBold',
   },
   largeTagLabel: {
     paddingHorizontal: 5,
-    height: 30,
+    paddingVertical: 8,
     backgroundColor: '#2030ba',
     color: '#ffffff',
     textAlign: 'center',
@@ -71,19 +70,20 @@ const styles = StyleSheet.create({
   },
   geoTag: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    paddingVertical: 10,
   },
   geoTagValue: {
-    height: 60,
     fontSize: 20,
     color: '#ffffff',
     textAlignVertical: 'center',
     paddingHorizontal: 10,
+    paddingVertical: 8,
     fontFamily: 'SourceSansPro-Regular',
   },
   geoTagLabel: {
     paddingHorizontal: 5,
-    height: 30,
+    paddingVertical: 8,
     backgroundColor: '#2030ba',
     color: '#ffffff',
     textAlign: 'center',
