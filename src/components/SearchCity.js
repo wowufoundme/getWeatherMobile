@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {  
   StyleSheet, 
   View, 
@@ -10,14 +10,17 @@ import {
 
 import Input from './Input';
 import fetchData from '../api/fetchData';
+import searchData from '../api/searchData';
 import imagesData from '../../assets/images/images.list';
 import Button from '../components/Button';
+import SearchResults from './SearchResults';
 
 const SearchCity = props => {
 
   const { navigation } = props;
   const [ city, setCity ] = useState('');
   const [ imageParam, setImageParam ] = useState(0);
+  const [ searchResults, setSearchResults ] = useState([]);
   const maxImageParam = imagesData.length-1;
   
   const getData = async (city='') => {
@@ -37,8 +40,8 @@ const SearchCity = props => {
 
   const { 
     container,
-    primaryContainer, 
-    imageBackground
+    imageBackground,
+    buttonContainer
   } = styles;
 
   const clearData = () => {
@@ -46,11 +49,25 @@ const SearchCity = props => {
     console.log('Cleared Data');
   }
 
+  useEffect(() => {
+    if(  city.length > 2 ) {
+        let newData = searchData(city);
+        setSearchResults(newData);
+    } else {
+        setSearchResults([]); 
+    }
+  }, [city])
+
   return (
     <View style={container}>
       <Image style={imageBackground} source={require('../../assets/images/wall.jpg')} />
       <Input city={city} setCity={setCity} getData={getData} />
-      <View style={{ position: 'absolute', bottom: 0, display: 'flex', flexDirection: 'row', justifyContent: 'center' }} >
+      { 
+        city === "" ? 
+        null :  
+        <SearchResults title="Search" setCity={setCity} getData={getData} data={searchResults} />
+      }
+      <View style={buttonContainer} >
         <Button theme="filled" title="Search" getData={getData} functionality="getdata" city={city} />
         <Button theme="outline" title="Clear" clearData={clearData} />
       </View>
@@ -66,22 +83,20 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: '#ffffff',
   },
-  primaryContainer: {
-    width: '100%',
-    height: 2000,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    flexGrow: 1,
-  },
   imageBackground: {
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
     resizeMode: 'cover',
     position: 'absolute',
     zIndex: -1
-  }
+  },
+  buttonContainer: {
+    position: 'absolute', 
+    bottom: 0, 
+    display: 'flex', 
+    flexDirection: 'row', 
+    justifyContent: 'center',
+  },
 })
 
 export default SearchCity;
