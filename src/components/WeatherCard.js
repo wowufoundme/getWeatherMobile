@@ -79,7 +79,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255, 255, 255, 1)',
     paddingTop: 30,
     paddingHorizontal: 20,
-    ...shadowLowDepth
   },
   gridParent: {
     width: '100%',

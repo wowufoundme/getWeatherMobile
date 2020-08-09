@@ -4,8 +4,7 @@ import {
   View, 
   Alert,
   Dimensions,
-  Image,
-  Text
+  Image
 } from 'react-native';
 
 import Input from './Input';
