@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { 
   View, 
   Text, 
@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import imagesData from '../../assets/images/images.list';
 import WeatherCard from './WeatherCard';
+import TemperatureModal from './TemperatureModal';
 
 const WeatherScreen = ({ route }) => {
 
@@ -19,16 +20,12 @@ const WeatherScreen = ({ route }) => {
   const data = route.params.data;
   const imageIndex = route.params.imageIndex;
 
-  useEffect(() => {
-    console.log(data.name, imageIndex);
-  })
-
   return (
-    <View style={{ flex: 1, height: 2000 }}>
+    <View style={{ flex: 1 }}>
       <ScrollView contentContainerStyle={contentContainer}>
         <View style={splitSixTen}>
           <Image style={imageBackground} source={imagesData[imageIndex]} />
-          <Text>{data.name}</Text>
+          <TemperatureModal data={data} />
         </View>
         <View style={{ flex: 0.4 }}>
           <WeatherCard data={data}/>
@@ -56,8 +53,6 @@ const styles = StyleSheet.create({
   splitSixTen: {
     flex: 0.6, 
     width: '100%', 
-    alignItems: 'center', 
-    justifyContent: 'center',
   }
 })
 

@@ -13,7 +13,7 @@ const Param = props => {
 
 const styles = StyleSheet.create({
   paramText: {
-    fontSize: 20,
+    fontSize: 18,
     fontFamily: 'SourceSansPro-Bold',
   }
 })
