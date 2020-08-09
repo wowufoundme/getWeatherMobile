@@ -1,5 +1,12 @@
 import React from 'react';
-import { ScrollView, Text, StyleSheet, View, Image } from 'react-native';
+import { 
+  ScrollView, 
+  Text, 
+  StyleSheet, 
+  View, 
+  Image 
+} from 'react-native';
+
 import Param from './Param';
 import Label from './Label';
 
@@ -120,7 +127,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    backgroundColor: '#ffffff',
+    backgroundColor: 'rgba(255, 255, 255, 1)',
     width: '95%',
     marginTop: 20,
   },
@@ -181,7 +188,7 @@ const styles = StyleSheet.create({
   cardContainer: {
     width: '95%',
     borderRadius: 3,
-    backgroundColor: '#ffffff',
+    backgroundColor: 'rgba(255, 255, 255, 1)',
     paddingVertical: 30,
     paddingHorizontal: 20,
     ...shadowLowDepth
