@@ -8,6 +8,7 @@ const imagesData = [
   require("./6.jpg"),
   require("./7.jpg"),
   require("./8.jpg"),
+  require("./wall.jpg")
 ]
 
 export default imagesData;

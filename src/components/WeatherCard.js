@@ -35,7 +35,7 @@ const WeatherCard = props => {
 
   return (
     <ScrollView contentContainerStyle={parentContainer}>
-      <View style={cityInformation}>
+      {/* <View style={cityInformation}>
         <View style={cityInfoContainer}>
           <Text style={cityName}>{data.name}</Text>
           <Text style={cityCountry}>{data.sys.country}</Text>
@@ -50,9 +50,9 @@ const WeatherCard = props => {
             <Text style={labelGeo}>Longitude</Text>
           </View>
         </View>
-      </View>
+      </View> */}
       <View style={cardContainer}>
-        <View style={temperatureContainer}>
+        {/* <View style={temperatureContainer}>
           <Text style={temperatureReading}>{Math.round(data.main.temp)}&deg; C</Text>
           <Image
             height={50}
@@ -60,7 +60,7 @@ const WeatherCard = props => {
             source={{ uri: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png` }}
             style={temperatureIcon}
           />
-        </View>
+        </View> */}
         <View style={gridParent}>
           <View style={gridChild}>
             <Param value={data.weather[0].main} />
@@ -186,10 +186,8 @@ const styles = StyleSheet.create({
     fontFamily: 'SourceSansPro-SemiBold'
   },
   cardContainer: {
-    width: '95%',
-    borderRadius: 3,
     backgroundColor: 'rgba(255, 255, 255, 1)',
-    paddingVertical: 30,
+    paddingTop: 30,
     paddingHorizontal: 20,
     ...shadowLowDepth
   },
@@ -210,8 +208,6 @@ const styles = StyleSheet.create({
   },
   gridParent: {
     width: '100%',
-    borderTopWidth: 1,
-    borderTopColor: 'rgba(0, 0, 0, 0.1)',
     paddingHorizontal: 10,
     paddingVertical: 15,
     display: 'flex',
